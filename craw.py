@@ -20,7 +20,8 @@ class Scrapper:
 
         counter = 0
         for i in range(self.range):
-            url = "url.{}/".format(self.range+i)
+            url = "https://url/.a{}/".format(self.range+i)
+            print(url)
             req = Request(url, headers=self.headers)
 
             try:
@@ -30,8 +31,11 @@ class Scrapper:
 
                 try:
                     headline = soup.find("article").contents
+                    print(headline)
                     lead = soup.find("div", {"class": "article__lead"}).get_text().strip()
+                    print(lead)
                     article_body = soup.find("div", {"class": "article__body"}).get_text()
+                    print(article_body)
                     article = headline[1].get_text() + "\n" + lead + "\n" + article_body + "\n"
                     with open('{}.txt'.format(self.name), 'a') as f:
                         f.write(article)
