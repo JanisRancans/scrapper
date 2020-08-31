@@ -50,7 +50,7 @@ class Scrapper:
 if __name__ == "__main__":
     queue = Queue()
 
-    scrapper = [Scrapper(input(), int(input()), int(input())) for x in range(20)]
+    scrapper = [Scrapper(input(), int(input())) for x in range(20)]
     processes = [Process(target=scrapper.scrape, args=()) for scrapper in scrapper]
 
     for p in processes:
